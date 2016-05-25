@@ -1,0 +1,33 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<configuration>
+
+    <appender name="STDOUT" class="ch.qos.logback.core.ConsoleAppender">
+        <encoder class="net.logstash.logback.encoder.LoggingEventCompositeJsonEncoder">
+            <providers class="net.batkin.test.ExtendedLoggingEventJsonProviders">
+                <timestamp>
+                    <fieldName>timestamp</fieldName>
+                </timestamp>
+                <message>
+                    <fieldName>message</fieldName>
+                </message>
+                <rawMessage>
+                    <fieldName>raw_message</fieldName>
+                </rawMessage>
+                <arguments>
+                    <fieldName>foo</fieldName>
+                    <includeNonStructuredArguments>true</includeNonStructuredArguments>
+                    <nonStructuredArgumentsFieldPrefix>bar</nonStructuredArgumentsFieldPrefix>
+                </arguments>
+                <tags />
+                <argsArray>
+                    <fieldName>args</fieldName>
+                </argsArray>
+            </providers>
+        </encoder>
+    </appender>
+
+
+    <root level="all">
+        <appender-ref ref="STDOUT" />
+    </root>
+</configuration>
